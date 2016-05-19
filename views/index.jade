@@ -1,0 +1,23 @@
+extends layout
+
+block body
+    div
+        h2 My Blog
+        ul
+            li
+                a(href='/') Home
+            li
+                a(href='/addPost') Add a new post
+
+    div(ng-view)
+    
+    //- mine
+    script(type='text/javascript', src='lib/angular/angular.min.js')
+    //- script(type='text/javascript', src='lib/angular-ui-router/angular-ui-router.min.js')
+    script(type='text/javascript', src='js/app.js')
+    
+    //- others
+    script(src='js/services.js')
+    script(src='js/controllers.js')
+    script(src='js/filters.js')
+    script(src='js/directives.js')
