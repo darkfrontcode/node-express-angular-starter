@@ -9,7 +9,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node server.js"
+    "start": "npm run open&&npm run server",
+    "server": "node server.js",
+    "open":"start chrome http://localhost:3000"
   },
   "repository": {
     "type": "git",
