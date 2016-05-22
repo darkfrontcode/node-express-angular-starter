@@ -1,4 +1,16 @@
-export default = {
+var data = require('../resources/posts.json');
+
+module.exports = {
+    test:function (req, res) {
+        res.send('Hello World!');
+    },
+    index: function(req, res){
+        res.render('index');
+    },
+    partials: function (req, res) {
+        var name = req.params.name;
+        res.render('partials/' + name);
+    },
     posts:function (req, res) {
         var posts = [];
         data.posts.forEach(function (post, i) {

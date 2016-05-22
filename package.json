@@ -7,11 +7,14 @@
     "express": "^4.13.4",
     "node": "^0.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "body-parser": "^1.15.1",
+    "jade": "^1.11.0"
+  },
   "scripts": {
     "start": "npm run open&&npm run server",
     "server": "node server.js",
-    "open":"start chrome http://localhost:3000"
+    "open": "start chrome http://localhost:3000"
   },
   "repository": {
     "type": "git",

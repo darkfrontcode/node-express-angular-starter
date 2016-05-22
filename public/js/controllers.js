@@ -1,56 +1,54 @@
-function index($scope, $http) {
-    $http.get('/api/posts').
-        success(function(data, status, headers, config) {
-            $scope.posts = data.posts;
-        });
-}
-
-function add($scope, $http, $location) {
-    $scope.form = {};
-    $scope.submitPost = function () {
-        $http.post('/api/post', $scope.form).
-            success(function(data) {
-                $location.path('/');
+var controllers = {
+    home: function($scope, $http) {
+        $http.get('/posts').
+            success(function(data, status, headers, config) {
+                $scope.posts = data.posts;
             });
-    };
-}
-
-function post($scope, $http, $routeParams) {
-    $http.get('/api/post/' + $routeParams.id).
-        success(function(data) {
-            $scope.post = data.post;
-        });
-}
-
-function edit($scope, $http, $location, $routeParams) {
-    $scope.form = {};
-    $http.get('/api/post/' + $routeParams.id).
-        success(function(data) {
-            $scope.form = data.post;
-        });
-
-    $scope.editPost = function () {
-        $http.put('/api/post/' + $routeParams.id, $scope.form).
+    },
+    add: function($scope, $http, $location) {
+        $scope.form = {};
+        $scope.submitPost = function () {
+            $http.post('/post', $scope.form).
+                success(function(data) {
+                    $location.path('/');
+                });
+        };
+    },
+    post: function($scope, $http, $routeParams) {
+        $http.get('/post/' + $routeParams.id).
             success(function(data) {
-                $location.url('/readPost/' + $routeParams.id);
+                $scope.post = data.post;
             });
-    };
-}
-
-function delete($scope, $http, $location, $routeParams) {
-    $http.get('/api/post/' + $routeParams.id).
-        success(function(data) {
-            $scope.post = data.post;
-        });
-
-    $scope.deletePost = function () {
-        $http.delete('/api/post/' + $routeParams.id).
+    },
+    edit: function($scope, $http, $location, $routeParams) {
+        $scope.form = {};
+        $http.get('/post/' + $routeParams.id).
             success(function(data) {
-                $location.url('/');
+                $scope.form = data.post;
             });
-    };
 
-    $scope.home = function () {
-        $location.url('/');
-    };
+        $scope.editPost = function () {
+            $http.put('/post/' + $routeParams.id, $scope.form).
+                success(function(data) {
+                    $location.url('/readPost/' + $routeParams.id);
+                });
+        };
+    },
+    delete: function($scope, $http, $location, $routeParams) {
+        $http.get('/post/' + $routeParams.id).
+            success(function(data) {
+                $scope.post = data.post;
+            });
+
+        $scope.deletePost = function () {
+            $http.delete('/post/' + $routeParams.id).
+                success(function(data) {
+                    $location.url('/');
+                });
+        };
+
+        $scope.home = function () {
+            $location.url('/');
+        };
+    }
 }

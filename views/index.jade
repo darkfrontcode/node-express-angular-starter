@@ -5,19 +5,20 @@ block body
         h2 My Blog
         ul
             li
-                a(href='/') Home
+                a(ui-sref="home") Home
             li
-                a(href='/addPost') Add a new post
+                a(ui-sref="add") Add a new post
 
-    div(ng-view)
+    div(ui-view)
     
     //- mine
     script(type='text/javascript', src='lib/angular/angular.min.js')
-    //- script(type='text/javascript', src='lib/angular-ui-router/angular-ui-router.min.js')
+    script(type='text/javascript', src='lib/angular-ui-router/angular-ui-router.min.js')
+    
+    script(src='js/controllers.js')
     script(type='text/javascript', src='js/app.js')
     
     //- others
-    script(src='js/services.js')
-    script(src='js/controllers.js')
-    script(src='js/filters.js')
-    script(src='js/directives.js')
+    //- script(src='js/services.js')
+    //- script(src='js/filters.js')
+    //- script(src='js/directives.js')
