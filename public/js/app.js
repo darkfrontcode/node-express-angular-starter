@@ -6,23 +6,23 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     $routeProvider.
         when('/', {
             templateUrl: 'partials/home',
-            controller: IndexCtrl
+            controller: index
         }).
-        when('/addPost', {
+        when('/add', {
             templateUrl: 'partials/add',
-            controller: AddPostCtrl
+            controller: add
         }).
-        when('/readPost/:id', {
+        when('/post/:id', {
             templateUrl: 'partials/post',
-            controller: ReadPostCtrl
+            controller: post
         }).
-        when('/editPost/:id', {
+        when('/edit/:id', {
             templateUrl: 'partials/edit',
-            controller: EditPostCtrl
+            controller: edit
         }).
-        when('/deletePost/:id', {
+        when('/delete/:id', {
             templateUrl: 'partials/delete',
-            controller: DeletePostCtrl
+            controller: delete
         }).
         otherwise({
             redirectTo: '/'
