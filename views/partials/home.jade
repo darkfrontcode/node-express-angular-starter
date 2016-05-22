@@ -2,8 +2,11 @@ p There are {{posts.length}} posts
 div(ng-repeat='post in posts')
     h3 {{post.title}}
     div {{post.text}}
-    a(href='readPost/{{post.id}}') More
-    |  - 
-    a(href='editPost/{{post.id}}') Edit
-    |  - 
-    a(href='deletePost/{{post.id}}') Delete
+    
+    ul
+        li
+            a(ui-sref="post({id: post.id})") More
+        li
+            a(ui-sref="edit({id: post.id})") Edit
+        li
+            a(ui-sref="delete({id: post.id})") Delete

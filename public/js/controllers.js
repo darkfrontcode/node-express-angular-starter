@@ -14,34 +14,34 @@ var controllers = {
                 });
         };
     },
-    post: function($scope, $http, $routeParams) {
-        $http.get('/post/' + $routeParams.id).
+    post: function($scope, $http, $stateParams) {
+        $http.get('/post/' + $stateParams.id).
             success(function(data) {
                 $scope.post = data.post;
             });
     },
-    edit: function($scope, $http, $location, $routeParams) {
+    edit: function($scope, $http, $location, $stateParams) {
         $scope.form = {};
-        $http.get('/post/' + $routeParams.id).
+        $http.get('/post/' + $stateParams.id).
             success(function(data) {
                 $scope.form = data.post;
             });
 
         $scope.editPost = function () {
-            $http.put('/post/' + $routeParams.id, $scope.form).
+            $http.put('/post/' + $stateParams.id, $scope.form).
                 success(function(data) {
-                    $location.url('/readPost/' + $routeParams.id);
+                    $location.url('/readPost/' + $stateParams.id);
                 });
         };
     },
-    delete: function($scope, $http, $location, $routeParams) {
-        $http.get('/post/' + $routeParams.id).
+    delete: function($scope, $http, $location, $stateParams) {
+        $http.get('/post/' + $stateParams.id).
             success(function(data) {
                 $scope.post = data.post;
             });
 
         $scope.deletePost = function () {
-            $http.delete('/post/' + $routeParams.id).
+            $http.delete('/post/' + $stateParams.id).
                 success(function(data) {
                     $location.url('/');
                 });

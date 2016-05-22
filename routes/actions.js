@@ -1,9 +1,6 @@
 var data = require('../resources/posts.json');
 
 module.exports = {
-    test:function (req, res) {
-        res.send('Hello World!');
-    },
     index: function(req, res){
         res.render('index');
     },
@@ -15,7 +12,7 @@ module.exports = {
         var posts = [];
         data.posts.forEach(function (post, i) {
             posts.push({
-                id: i,
+                id: post.id,
                 title: post.title,
                 text: post.text.substr(0, 50) + '...'
             });
@@ -35,6 +32,7 @@ module.exports = {
         }
     },
     add: function (req, res) {
+        req.body['id']=data.posts.length+1;
         data.posts.push(req.body);
         res.json(req.body);
     },
