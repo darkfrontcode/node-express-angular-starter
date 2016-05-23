@@ -1,24 +1,25 @@
 extends layout
 
 block body
-    div
-        h2 My Blog
-        ul
-            li
-                a(ui-sref="home") Home
-            li
-                a(ui-sref="add") Add a new post
+    div.container
+        div.row
+            header.root
+                h2.text-center Blog
+            
+            nav.root
+                ul.list-inline.text-center.text-uppercase
+                    li
+                        a.btn.btn-default.btn-sm(ui-sref="home")
+                            span Home
+                            i.glyphicon.glyphicon-send(aria-hidden="true")
+                    li
+                        a.btn.btn-default.btn-sm(ui-sref="add")
+                            span new post
+                            i.glyphicon.glyphicon-plus-sign(aria-hidden="true")
 
-    div(ui-view)
+            div(ui-view)
     
-    //- mine
     script(type='text/javascript', src='lib/angular/angular.js')
     script(type='text/javascript', src='lib/angular-ui-router/angular-ui-router.min.js')
-    
     script(src='js/controllers.js')
     script(type='text/javascript', src='js/app.js')
-    
-    //- others
-    //- script(src='js/services.js')
-    //- script(src='js/filters.js')
-    //- script(src='js/directives.js')

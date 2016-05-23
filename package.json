@@ -9,7 +9,9 @@
   },
   "devDependencies": {
     "body-parser": "^1.15.1",
-    "jade": "^1.11.0"
+    "jade": "^1.11.0",
+    "nib": "^1.1.0",
+    "stylus": "^0.54.5"
   },
   "scripts": {
     "start": "npm run open&&npm run server",
