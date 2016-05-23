@@ -9,51 +9,50 @@ module.exports = {
         res.render('partials/' + name);
     },
     posts:function (req, res) {
-        var posts = [];
-        data.posts.forEach(function (post, i) {
-            posts.push({
-                id: post.id,
-                title: post.title,
-                text: post.text.substr(0, 50) + '...'
-            });
-        });
-        res.json({
-            posts: posts
-        });
+
+        var posts = data.posts.reduce(function(all, item, index){
+            item['intro'] = item.text.substr(0, 50) + '...';
+            all.push(item);
+            return all;
+        }, []);
+
+        res.json({ posts: posts });
     },
     post: function (req, res) {
         var id = req.params.id;
-        if (id >= 0 && id < data.posts.length) {
-            res.json({
-                post: data.posts[id]
-            });
-        } else {
-            res.json(false);
-        }
+
+        var post = data.posts.filter(function(post){
+            return post.id == id
+        });
+
+        res.json({ post: post[0] });
     },
     add: function (req, res) {
+
         req.body['id']=data.posts.length+1;
         data.posts.push(req.body);
+
         res.json(req.body);
     },
     edit: function (req, res) {
         var id = req.params.id;
 
-        if (id >= 0 && id < data.posts.length) {
-            data.posts[id] = req.body;
-            res.json(true);
-        } else {
-            res.json(false);
-        }
+        var posts = data.posts.reduce(function(all, item, index){
+            if(item.id==id) item = req.body
+            all.push(item);
+            return all;
+        }, []);
+
+        data.posts = posts;
+        res.json(true);
     },
     delete: function (req, res) {
         var id = req.params.id;
 
-        if (id >= 0 && id < data.posts.length) {
-            data.posts.splice(id, 1);
-            res.json(true);
-        } else {
-            res.json(false);
-        }
+        data.posts.filter(function(post){
+            return post.id != id
+        });
+
+        res.json(true);
     }
 }

@@ -16,7 +16,8 @@
   "scripts": {
     "start": "npm run open&&npm run server",
     "server": "node server.js",
-    "open": "start chrome http://localhost:3000"
+    "open": "start chrome http://localhost:3000",
+    "watch": "nodemon ./server.js"
   },
   "repository": {
     "type": "git",

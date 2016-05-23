@@ -1,7 +1,13 @@
-h2 {{post.title}}
-div {{post.text}}
-p
-    | Are you sure you want to delete this post? 
-    button(ng-click='deletePost()') Yes
-    |  - 
-    button(ng-click='home()') No thanks
+article.text-center.panel.panel-default
+    h2 {{post.title}}
+    p {{post.text}}
+
+
+div.panel.panel-danger.text-center
+    div.panel-heading Are you sure you want to delete this post?
+    div.panel-body
+        ul.list-inline
+            li
+                button.btn.btn-danger(ng-click='deletePost()') Yes
+            li
+                button.btn.btn-default(ng-click='home()') No thanks
