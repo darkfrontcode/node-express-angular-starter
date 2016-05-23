@@ -37,19 +37,18 @@ module.exports = {
     edit: function (req, res) {
         var id = req.params.id;
 
-        var posts = data.posts.reduce(function(all, item, index){
+        data.posts = data.posts.reduce(function(all, item, index){
             if(item.id==id) item = req.body
             all.push(item);
             return all;
         }, []);
 
-        data.posts = posts;
         res.json(true);
     },
     delete: function (req, res) {
         var id = req.params.id;
 
-        data.posts.filter(function(post){
+        data.posts = data.posts.filter(function(post){
             return post.id != id
         });
 

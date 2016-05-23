@@ -1,7 +1,13 @@
-h2 Edit post
-label(for='title') Title: 
-input(ng-model='form.title', name='title')
-p Body:
-textarea(ng-model='form.text', cols='50', rows='15')
-p
-    button(ng-click='editPost()') Edit Post
+header
+    h2.text-center Edit your post
+
+div.row
+    div(class="form-group")
+        label(for="title") Type your title:
+        input(ng-model='form.title', class="form-control", id="title", placeholder="Title")
+
+    div(class="form-group")
+        label(for="text") Type your text:
+        textarea(ng-model='form.text', class="form-control", id="text", cols='50', rows='15', placeholder="Text")
+        
+    button(ng-click='editPost()', class="btn btn-primary") Save your post
