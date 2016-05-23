@@ -35,16 +35,14 @@ var controllers = {
         };
     },
     delete: function($scope, $http, $location, $stateParams) {
-        $http.get('/post/' + $stateParams.id).
-            success(function(data) {
-                $scope.post = data.post;
-            });
+        $http.get('/post/' + $stateParams.id).success(function(data) {
+            $scope.post = data.post;
+        });
 
         $scope.deletePost = function () {
-            $http.delete('/post/' + $stateParams.id).
-                success(function(data) {
-                    $location.url('/');
-                });
+            $http.delete('/post/' + $stateParams.id).success(function(data) {
+                $location.url('/');
+            });
         };
 
         $scope.home = function () {

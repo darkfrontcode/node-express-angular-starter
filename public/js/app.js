@@ -1,7 +1,5 @@
 "use strict";
 
-// 'app.filters', 'app.services', 'app.directives'
-
 var app = angular.module('app', ['ui.router']);
 
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
